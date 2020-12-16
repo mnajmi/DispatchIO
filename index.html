@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+      <script src = "/socket.io/socket.io.js"></script>
+      <script>
+         var socket = io();//('/DispatchServer');
+         socket.emit('clientEvent', 'Sent an event from the client!');
+
+         socket.on('broadcast',function(data) {console.log(data.description); });
+         socket.on('newclientconnect',function(data) {console.log(data.description);});
+         socket.on('hi',function(data) { console.log(data);});
+
+         socket.on('message', function(data){console.log(data)});
+         socket.on('serverEvent', function(data){console.log(data)});
+      </script>
+   </head>
+   <body><h1>Hello world!</h1></body>
+</html>
