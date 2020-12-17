@@ -5,13 +5,10 @@
       <script src = "/socket.io/socket.io.js"></script>
       <script>
          var socket = io();//('/DispatchServer');
+         //client event with acknowledgemnet
+         socket.emit('clientEventAcknowledge', 'Sent an event from the client with acknowledgement!', (response) => {console.log(response);});
+         //client event with-out acknowledgemnet
          socket.emit('clientEvent', 'Sent an event from the client!');
-
-         socket.on('broadcast',function(data) {console.log(data.description); });
-         socket.on('newclientconnect',function(data) {console.log(data.description);});
-         socket.on('hi',function(data) { console.log(data);});
-
-         socket.on('message', function(data){console.log(data)});
          socket.on('serverEvent', function(data){console.log(data)});
       </script>
    </head>
